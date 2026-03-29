@@ -83,54 +83,15 @@ export default function MemoraXScene() {
       {/* Hero Overlay */}
       <HeroOverlay onExplore={handleExplore} visible={!exploring} />
 
-      {/* Dashboard transition */}
+      {/* Fade to black on explore */}
       <AnimatePresence>
-        {showDashboard && (
+        {exploring && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-background"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-center"
-            >
-              <h2 className="font-display text-3xl md:text-5xl text-foreground text-glow mb-4">
-                Welcome to <span className="text-primary">MemoraX</span>
-              </h2>
-              <p className="text-muted-foreground font-body text-lg mb-8">
-                Your AI-powered event planning dashboard is loading...
-              </p>
-              {/* TODO: Replace with real event data API */}
-              <div className="flex gap-4 justify-center flex-wrap px-6">
-                {["Weddings", "Concerts", "Parties"].map((type, i) => (
-                  <motion.div
-                    key={type}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1 + i * 0.2, duration: 0.6 }}
-                    className="glass-panel rounded-xl px-8 py-6 neon-glow-gold border border-primary/20"
-                  >
-                    <p className="text-primary font-display text-xl">{type}</p>
-                    <p className="text-muted-foreground font-body text-sm mt-1">AI-Planned</p>
-                  </motion.div>
-                ))}
-              </div>
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2 }}
-                onClick={() => { setShowDashboard(false); setExploring(false); }}
-                className="mt-10 px-6 py-3 rounded-lg glass-panel border border-border text-muted-foreground
-                           font-body text-sm hover:text-foreground hover:border-primary/30 transition-all cursor-pointer"
-              >
-                ← Back to Experience
-              </motion.button>
-            </motion.div>
-          </motion.div>
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 z-30 bg-background"
+          />
         )}
       </AnimatePresence>
     </div>
