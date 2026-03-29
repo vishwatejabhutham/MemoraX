@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import HeroOverlay from "./HeroOverlay";
 
@@ -6,16 +7,17 @@ import weddingBg from "@/assets/wedding-bg.avif";
 import concertCrowd from "@/assets/concert-crowd.jpg";
 import weddingDecor from "@/assets/wedding-decor.avif";
 import concertStage from "@/assets/concert-stage.jpg";
+import memoBg from "@/assets/memorax-bg.mp4";
 
 // TODO: Integrate AI planning backend
 export default function MemoraXScene() {
+  const navigate = useNavigate();
   const [exploring, setExploring] = useState(false);
-  const [showDashboard, setShowDashboard] = useState(false);
 
   const handleExplore = useCallback(() => {
     setExploring(true);
-    setTimeout(() => setShowDashboard(true), 2000);
-  }, []);
+    setTimeout(() => navigate("/auth"), 1500);
+  }, [navigate]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-background">
