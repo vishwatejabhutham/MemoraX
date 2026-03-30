@@ -94,7 +94,7 @@ export default function Auth() {
           loop
           muted
           playsInline
-          className="absolute w-[120%] h-[120%] object-cover opacity-40"
+          className="absolute w-[120%] h-[120%] object-cover opacity-50 brightness-125"
           style={{ top: "-10%", left: "-5%" }}
         >
           <source src={memoBg} type="video/mp4" />
